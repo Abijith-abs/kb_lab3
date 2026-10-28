@@ -34,7 +34,8 @@ kb_lab3/
 │       ├── module_08_sampling_theory.pdf       sampling, Nyquist, aliasing, reconstruction (22 pp)
 │       └── module_10_discrete_fourier_transform.pdf   DFT, windowing/leakage, FFT (32 pp)
 └── data/
-    ├── part_a_matlab_sampling_plots/           MATLAB figures of cosgen2 output at different fs
+    ├── part_a_matlab_sampling_plots/           MATLAB figures of cosgen2 output at different fs (fs=1kHz now regenerated)
+    ├── prelab_fft_plots/                       regenerated FFT figures from prelab3.m (n=0:29 and n=0:59, N=64/128/256)
     ├── part_b_oscilloscope_fft/                oscilloscope photos: waveform + FFT, windows, cycle counts
     └── chat_screenshots/                       WhatsApp screenshots whose captions label the photos
 ```
@@ -111,7 +112,7 @@ All show `y = 10cos(1000πt)` plotted against time (x axis in ×10⁻³ s; the e
 | `fs_10khz_duplicate.jpeg` | 10 kHz | Byte-identical copy of `fs_10khz.jpeg` (same MD5). Safe to delete. |
 | `fs_800hz.jpeg` | 800 Hz | Jagged zigzag through −10, 7.07, 0, −7.07, 10, … (13 samples); peaks do not reach the true amplitude every time. |
 | `fs_500hz.jpeg` | 500 Hz | A flat horizontal line at −10 (all 8 samples equal −10). |
-| *(missing)* | 1 kHz | Part A step 3 asks for it; **no screenshot is in the repo**. |
+| `fs_1khz.jpeg` | 1 kHz | **Generated Oct 2026 (was missing):** critical sampling at Nyquist (2× f), 16 samples alternating −10 / +10, zigzag triangle – see `data/part_a_matlab_sampling_plots/fs_1khz.jpeg`. Generated via Python replica of `cosgen2`. |
 
 ### 5.5 `data/part_b_oscilloscope_fft/` (photos of the Keysight scope)
 
@@ -135,8 +136,8 @@ Screenshots of the WhatsApp conversation in which the photos were forwarded. The
 
 ## 6. Known gaps and inconsistencies
 
-1. `fs = 1 kHz` MATLAB plot (Part A step 3) is missing.
-2. No output figures from `prelab3.m` (N = 64/128/256, nor the `n = [0:59]` version).
+1. ~~`fs = 1 kHz` MATLAB plot (Part A step 3) is missing.~~ → **Resolved Oct 2026:** `data/part_a_matlab_sampling_plots/fs_1khz.jpeg` generated (16 samples, critical Nyquist, alternating ±10). See `data/prelab_fft_plots/REGENERATED_NOTES.md`.
+2. ~~No output figures from `prelab3.m` (N = 64/128/256, nor the `n = [0:59]` version).~~ → **Resolved Oct 2026:** `data/prelab_fft_plots/prelab3_n30_N64_128_256.*` (n=0:29) and `prelab3_n60_N64_128_256.*` (n=0:59) generated via Python/NumPy replica of `prelab3.m`; peaks 13.8→22.9 at N=64, 15.05→29.77 at N=128/256, y-limit 30.
 3. Post-lab written answers, sketches (rect pulse, Hanning window) and the completed result sheet / report are not in the repo; the `.docx` is a blank template.
 4. Module 7 and Module 11 slides, cited by the instruction sheet, are not included.
 5. `fs_10khz_duplicate.jpeg` is a byte-identical duplicate.
